@@ -1,2 +1,2 @@
-# EvaTool_RC
+# EvaTool_RotationClinching
 Evaluation tools for rotation clinching
