@@ -1,4 +1,4 @@
-# EvaTool_RotationClinching
+# EvaTools for Rotation Clinching
 Evaluation tools(Auswertungstool) for rotation clinching in Matlab
 
 
