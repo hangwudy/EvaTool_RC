@@ -3,8 +3,8 @@ function varargout = Auswertungstool(varargin)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%         Version 0.70                                                %%%
-%%%         Last updated on July 03, 2018                               %%%
+%%%         Version 1.00                                                %%%
+%%%         Last updated on August 09, 2018                             %%%
 %%%         Created by Hang Wu at utg of TUM on April 30, 2018          %%%
 %%%         Feedback & support: h.wu@tum.de                             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -595,10 +595,14 @@ Data = [Halsdicke_eintauch' Halsdicke_austauch' Hinterschnitt_eintauch' Hintersc
 bar(Data);
 set(gca,'xticklabel',handles.Versuchsnummer);
 legend('Halsdicke Eintauchseite','Halsdicke Austauchseite','Hinterschnitt Eintauchseite','Hinterschnitt Austauchseite')
+legend('Location','northeastoutside')
 xlabel('Versuchsnummer')
 ylabel('Länge in mm')
 ax = gca;
 set(ax,'YTick',[0:0.1:2.0])
+set(gcf,'unit','centimeters','position',[10 5 20 10]);
+set(ax,'Position',[0.1 0.15 0.6 0.8])
+
 %set(ax,'XTick',[1:1:length(Versuchsnummer)])
 grid on 
 % in-Display
