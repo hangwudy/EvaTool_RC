@@ -107,8 +107,8 @@ set(f102, 'Name', 'Undercut','NumberTitle','off');
 %
 
 
-x_ou_right = x_ou(Grenze_x_ou:length(x_uo));
-y_ou_right = y_ou(Grenze_x_ou:length(x_uo));
+x_ou_right = x_ou(Grenze_x_ou:length(x_ou));
+y_ou_right = y_ou(Grenze_x_ou:length(x_ou));
 
 x_interp_ou_right = interp1(y_ou_right, x_ou_right, y_interp_ou_right);
 plot(x_ou_right,y_ou_right,'k-',x_interp_ou_right,y_interp_ou_right,'g-') 

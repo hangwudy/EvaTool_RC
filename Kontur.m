@@ -2,8 +2,8 @@ function varargout = Kontur(varargin)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%         Version 1.0                                                %%%
-%%%         Last updated on July 26, 2018                               %%%
+%%%         Version 1.50                                                %%%
+%%%         Last updated on September 7, 2018                           %%%
 %%%         Created by Hang Wu at utg of TUM on June 26, 2018           %%%
 %%%         Feedback & support: h.wu@tum.de                             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,6 +12,13 @@ function varargout = Kontur(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%         Changelog                                                   %%%
+%%%         v1.50:                                                      %%%
+%%%             Added:                                                  %%%
+%%%                 -Zoom                                               %%%
+%%%                 -Direct Undercut                                    %%%
+%%%             Fixed:                                                  %%%
+%%%                 -Bugs                                               %%%
+%%%                 -Current axes problem                               %%%
 %%%         v1.00:                                                      %%%
 %%%             Added:                                                  %%%
 %%%                 -Comparison                                         %%%
@@ -316,9 +323,11 @@ while in == 0
     figure();
     imshow(handles.I);
     hold on;
+    zoom on;
     % get points from mouse, use DELETE to remove point
     [a1,a2] = getpts();
     hold on
+    zoom on;
     plot(a1,a2,'- .c', 'LineWidth',1, 'MarkerSize',10)
     answer = questdlg('Is the input suitable?', ...
         'Kontur', ...
@@ -342,8 +351,10 @@ ax2 = size(handles.I,1)-a2;
 handles.M_uu = [a1,ax2]/handles.scale;
 display(handles.M_uu);
 
+
+% plot in GUI
 hold on
-plot(handles.M_uu(:,1),handles.M_uu(:,2),'- c');
+plot(handles.axes_outline,handles.M_uu(:,1),handles.M_uu(:,2),'- c');
 hold on
 axis equal
 
@@ -417,8 +428,11 @@ ax4 = size(handles.I,1)-a4;
 handles.M_ul = [a3,ax4]/handles.scale;
 display(handles.M_ul);
 
+
+
+% plot in GUI
 hold on
-plot(handles.M_ul(:,1),handles.M_ul(:,2),'- g');
+plot(handles.axes_outline,handles.M_ul(:,1),handles.M_ul(:,2),'- g');
 hold on
 axis equal
 
@@ -498,8 +512,10 @@ bx2 = size(handles.I,1)-b2;
 handles.M_lu = [b1,bx2]/handles.scale;
 display(handles.M_lu);
 
+
+% plot in GUI
 hold on
-plot(handles.M_lu(:,1),handles.M_lu(:,2),'- m');
+plot(handles.axes_outline,handles.M_lu(:,1),handles.M_lu(:,2),'- m');
 hold on
 axis equal
 
@@ -582,8 +598,11 @@ bx4 = size(handles.I,1)-b4;
 handles.M_ll = [b3,bx4]/handles.scale;
 display(handles.M_ll);
 
+
+
+% plot in GUI
 hold on
-plot(handles.M_ll(:,1),handles.M_ll(:,2),'- b');
+plot(handles.axes_outline,handles.M_ll(:,1),handles.M_ll(:,2),'- b');
 hold off
 axis equal
 
@@ -1277,7 +1296,7 @@ function pushbutton_import_data_Callback(hObject, eventdata, handles)
 
 
 
-
+axes(handles.axes_outline)
 
 [FileName,PathName] = uigetfile(...
     'Select the Matfile','MultiSelect','off');
@@ -1308,9 +1327,9 @@ if PathName ~= 0
     handles.M_ll = S_Uu;
     % display(handles.M_uu);
 
-    hold on
-    plot(handles.axes_outline, handles.M_uu(:,1),handles.M_uu(:,2),'- c');
     % hold on
+    plot(handles.axes_outline, handles.M_uu(:,1),handles.M_uu(:,2),'- c');
+    hold on
     plot(handles.axes_outline, handles.M_ul(:,1),handles.M_ul(:,2),'- g');
     plot(handles.axes_outline, handles.M_lu(:,1),handles.M_lu(:,2),'- m');
     plot(handles.axes_outline, handles.M_ll(:,1),handles.M_ll(:,2),'- b');
