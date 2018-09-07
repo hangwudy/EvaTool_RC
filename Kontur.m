@@ -1500,11 +1500,11 @@ set(f1, 'Name', 'Result','NumberTitle','off');
 [Halsdicke_austauch,Halsdicke_eintauch,Hinterschnitt_austauch,Hinterschnitt_eintauch] = Analysis(handles.x_Oo,handles.y_Oo,handles.x_Ou,handles.y_Ou,handles.x_Uo,handles.y_Uo);
 
 
-% % if the undercut is negativ, set to zero
-% Halsdicke_austauch = max(Halsdicke_austauch, 0);
-% Halsdicke_eintauch = max(Halsdicke_eintauch, 0);
-% Hinterschnitt_austauch = max(Hinterschnitt_austauch, 0);
-% Hinterschnitt_eintauch = max(Hinterschnitt_eintauch, 0);
+% if the undercut is negativ, set to zero
+Halsdicke_austauch = max(Halsdicke_austauch, 0);
+Halsdicke_eintauch = max(Halsdicke_eintauch, 0);
+Hinterschnitt_austauch = max(Hinterschnitt_austauch, 0);
+Hinterschnitt_eintauch = max(Hinterschnitt_eintauch, 0);
 
 
 
