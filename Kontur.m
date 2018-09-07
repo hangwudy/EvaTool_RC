@@ -71,7 +71,7 @@ function varargout = Kontur(varargin)
 
 % Edit the above text to modify the response to help Kontur
 
-% Last Modified by GUIDE v2.5 07-Sep-2018 15:47:12
+% Last Modified by GUIDE v2.5 07-Sep-2018 16:14:55
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -357,6 +357,7 @@ display(handles.M_uu);
 
 
 % plot in GUI
+axes(handles.axes_outline)
 hold on
 plot(handles.axes_outline,handles.M_uu(:,1),handles.M_uu(:,2),'- c');
 hold on
@@ -440,6 +441,7 @@ display(handles.M_ul);
 
 
 % plot in GUI
+axes(handles.axes_outline)
 hold on
 plot(handles.axes_outline,handles.M_ul(:,1),handles.M_ul(:,2),'- g');
 hold on
@@ -529,6 +531,7 @@ display(handles.M_lu);
 
 
 % plot in GUI
+axes(handles.axes_outline)
 hold on
 plot(handles.axes_outline,handles.M_lu(:,1),handles.M_lu(:,2),'- m');
 hold on
@@ -621,6 +624,7 @@ display(handles.M_ll);
 
 
 % plot in GUI
+axes(handles.axes_outline)
 hold on
 plot(handles.axes_outline,handles.M_ll(:,1),handles.M_ll(:,2),'- b');
 hold off
@@ -1495,6 +1499,18 @@ f1 = figure(20);
 set(f1, 'Name', 'Result','NumberTitle','off');
 [Halsdicke_austauch,Halsdicke_eintauch,Hinterschnitt_austauch,Hinterschnitt_eintauch] = Analysis(handles.x_Oo,handles.y_Oo,handles.x_Ou,handles.y_Ou,handles.x_Uo,handles.y_Uo);
 
+
+% % if the undercut is negativ, set to zero
+% Halsdicke_austauch = max(Halsdicke_austauch, 0);
+% Halsdicke_eintauch = max(Halsdicke_eintauch, 0);
+% Hinterschnitt_austauch = max(Hinterschnitt_austauch, 0);
+% Hinterschnitt_eintauch = max(Hinterschnitt_eintauch, 0);
+
+
+
+
+
+
 Data = [Halsdicke_eintauch Halsdicke_austauch Hinterschnitt_eintauch Hinterschnitt_austauch];
 % C = categorical({'HD ES','HD AS','HS ES','HS AS'});
 % C = {'HD ES','HD AS','HS ES','HS AS'};
@@ -1537,6 +1553,9 @@ f2 = figure(30);
 set(f2, 'Name', 'Comparison','NumberTitle','off');
 ax = axes(f2);
 [Halsdicke_austauch,Halsdicke_eintauch,Hinterschnitt_austauch,Hinterschnitt_eintauch] = Analysis_SIMULATION(handles.X_Oo_GUI, handles.Y_Oo_GUI, handles.X_Ou_GUI, handles.Y_Ou_GUI, handles.X_Uo_GUI, handles.Y_Uo_GUI);
+
+
+
 
 handles.hd_as_aw = Halsdicke_austauch;
 handles.hd_es_aw = Halsdicke_eintauch;
@@ -1590,17 +1609,3 @@ function pushbutton_get_undercut_Callback(hObject, eventdata, handles)
 % 
 % % Save the handles structure.
 % guidata(hObject,handles)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
