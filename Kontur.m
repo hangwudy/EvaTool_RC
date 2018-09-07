@@ -71,7 +71,7 @@ function varargout = Kontur(varargin)
 
 % Edit the above text to modify the response to help Kontur
 
-% Last Modified by GUIDE v2.5 26-Jul-2018 12:24:29
+% Last Modified by GUIDE v2.5 07-Sep-2018 15:47:12
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -1563,3 +1563,44 @@ hold off
 %%%
 % Save the handles structure.
 guidata(hObject,handles)
+
+
+% --- Executes on button press in pushbutton_get_undercut.
+function pushbutton_get_undercut_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_get_undercut (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+
+% figure()
+% imshow(handles.I);
+% 
+% [uc_x, uc_y] = getpts();
+% 
+% uc_dis = abs(uc_x(1)-uc_x(2));
+% 
+% 
+% handles.scale = scale;
+% close(gcf);
+% 
+% % 
+% set(handles.edit_scale, 'String', handles.scale);
+% 
+% 
+% % Save the handles structure.
+% guidata(hObject,handles)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
