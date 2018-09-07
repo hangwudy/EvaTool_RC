@@ -345,6 +345,9 @@ while in == 0
     end
 end
 
+handles.a1 = a1;
+handles.a2 = a2;
+
 
 ax2 = size(handles.I,1)-a2;
 
@@ -403,7 +406,7 @@ while in == 0
     fig2=figure(2);
     imshow(handles.I);
     hold on;
-    
+    plot(handles.a1,handles.a2,'- .c', 'LineWidth',1, 'MarkerSize',10)
     cameratoolbar(fig2,'Show')
     % get points from mouse, use DELETE to remove point
     [a3,a4] = getpts();
@@ -424,6 +427,9 @@ while in == 0
     end
 end
 
+
+handles.a3 = a3;
+handles.a4 = a4;
 
 ax4 = size(handles.I,1)-a4;
 
@@ -489,7 +495,8 @@ while in == 0
     fig3=figure(3);
     imshow(handles.I);
     hold on;
-    
+    plot(handles.a1,handles.a2,'- .c', 'LineWidth',1, 'MarkerSize',10)
+    plot(handles.a3,handles.a4,'- .c', 'LineWidth',1, 'MarkerSize',10)
     cameratoolbar(fig3,'Show')
     % get points from mouse, use DELETE to remove point
     [b1,b2] = getpts();
@@ -510,6 +517,9 @@ while in == 0
     end
 end
 
+
+handles.b1 = b1;
+handles.b2 = b2;
 
 bx2 = size(handles.I,1)-b2;
 
@@ -577,11 +587,14 @@ while in == 0
     fig4=figure(4);
     imshow(handles.I);
     hold on;
-    
+    plot(handles.a1,handles.a2,'- .c', 'LineWidth',1, 'MarkerSize',10)
+    plot(handles.a3,handles.a4,'- .c', 'LineWidth',1, 'MarkerSize',10)
+    plot(handles.b1,handles.b2,'- .c', 'LineWidth',1, 'MarkerSize',10)
     cameratoolbar(fig4,'Show')
     % get points from mouse, use DELETE to remove point
     [b3,b4] = getpts();
     hold on
+
     plot(b3,b4,'- .c', 'LineWidth',1, 'MarkerSize',10)
     answer = questdlg('Is the input suitable?', ...
         'Kontur', ...
