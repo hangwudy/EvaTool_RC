@@ -320,10 +320,11 @@ while in == 0
     guidata(hObject,handles)
     % disp(handles.count1)
     % hold off;
-    figure();
+    fig1=figure(1);
     imshow(handles.I);
     hold on;
-    zoom on;
+    
+    cameratoolbar(fig1,'Show')
     % get points from mouse, use DELETE to remove point
     [a1,a2] = getpts();
     hold on
@@ -399,9 +400,11 @@ while in == 0
     handles.count2 = 1;
     guidata(hObject,handles)
     % hold off;
-    figure();
+    fig2=figure(2);
     imshow(handles.I);
     hold on;
+    
+    cameratoolbar(fig2,'Show')
     % get points from mouse, use DELETE to remove point
     [a3,a4] = getpts();
     hold on
@@ -483,9 +486,11 @@ while in == 0
     handles.count3 = 1;
     guidata(hObject,handles)
     % hold off;
-    figure(3);
+    fig3=figure(3);
     imshow(handles.I);
     hold on;
+    
+    cameratoolbar(fig3,'Show')
     % get points from mouse, use DELETE to remove point
     [b1,b2] = getpts();
     hold on
@@ -569,9 +574,11 @@ while in == 0
     handles.count4 = 1;
     guidata(hObject,handles)
     % hold off;
-    figure(4);
+    fig4=figure(4);
     imshow(handles.I);
     hold on;
+    
+    cameratoolbar(fig4,'Show')
     % get points from mouse, use DELETE to remove point
     [b3,b4] = getpts();
     hold on
