@@ -2,8 +2,8 @@ function varargout = Kontur(varargin)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%         Version 1.50                                                %%%
-%%%         Last updated on September 7, 2018                           %%%
+%%%         Version 2.00                                                %%%
+%%%         Last updated on September 10, 2018                          %%%
 %%%         Created by Hang Wu at utg of TUM on June 26, 2018           %%%
 %%%         Feedback & support: h.wu@tum.de                             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,6 +12,9 @@ function varargout = Kontur(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%         Changelog                                                   %%%
+%%%         v2.00:                                                      %%%
+%%%             Added:                                                  %%%
+%%%                 -Direct Distance                                    %%%
 %%%         v1.50:                                                      %%%
 %%%             Added:                                                  %%%
 %%%                 -Zoom                                               %%%
@@ -1592,20 +1595,14 @@ function pushbutton_get_undercut_Callback(hObject, eventdata, handles)
 
 
 
-% figure()
-% imshow(handles.I);
-% 
-% [uc_x, uc_y] = getpts();
-% 
-% uc_dis = abs(uc_x(1)-uc_x(2));
-% 
-% 
-% handles.scale = scale;
-% close(gcf);
-% 
-% % 
-% set(handles.edit_scale, 'String', handles.scale);
-% 
-% 
-% % Save the handles structure.
-% guidata(hObject,handles)
+figure()
+imshow(handles.I);
+
+[uc_x,] = getpts();
+uc_dis = abs(uc_x(1)-uc_x(2))/handles.scale;
+
+disp(uc_dis);
+close(gcf);
+handles.uc_dis = uc_dis;
+
+guidata(hObject,handles)
